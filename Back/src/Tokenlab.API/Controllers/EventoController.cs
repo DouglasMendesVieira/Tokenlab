@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Tokenlab.API.Data;
 using Tokenlab.API.Models;
 
 namespace Tokenlab.API.Controllers
@@ -12,45 +13,25 @@ namespace Tokenlab.API.Controllers
     [Route("api/[controller]")]
     public class EventoController : ControllerBase
     {
-        public IEnumerable<Evento> _evento = new Evento[]{
-                new Evento() {
-                    EventoId = 1,
-                    Tema = "Web - Desafio Técnico",
-                    Descricao = "Aaaaaa aaaaa aaaa",
-                    Local = "Ipatinga",
-                    DataEvento = DateTime.Now.AddDays(2).ToString(),
-                    HoraInicio = "13:00",
-                    HoraTermino = "15:00",
-                    QtdPessoas = 250,
-                    Lote = "1º Lote"
-                },
-                new Evento() {
-                    EventoId = 2,
-                    Tema = "Web - Desafio Técnico",
-                    Descricao = "Aaaaaa aaaaa aaaa",
-                    Local = "Ipatinga",
-                    DataEvento = DateTime.Now.AddDays(2).ToString(),
-                    HoraInicio = "13:00",
-                    HoraTermino = "15:00",
-                    QtdPessoas = 250,
-                    Lote = "1º Lote"
-                }
-            };
-        public EventoController()
+        private readonly DataContext _context;
+        public EventoController(DataContext context)
         {
+            _context = context;
 
         }
 
         [HttpGet]
         public IEnumerable<Evento> Get()
         {
-            return _evento;
+            return _context.Eventos;
         }
 
         [HttpGet("{id}")]
-        public IEnumerable<Evento> GetById(int id)
+        public Evento GetById(int id)
         {
-            return _evento.Where(evento => evento.EventoId == id);
+            return _context.Eventos.FirstOrDefault(
+                evento => evento.EventoId == id
+            );
         }
 
         [HttpPost]
