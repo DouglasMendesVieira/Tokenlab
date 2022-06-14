@@ -4,9 +4,12 @@ import { Palestrante } from './Palestrante';
 
 export interface Evento {
   id: number;
+  tema: string;
+  descricao: string;
   local: string;
   dataEvento?: Date;
-  tema: string;
+  horaInicio: string;
+  horaTermino: string;
   qtdPessoas: number;
   imagemURL: string;
   telefone: string;
