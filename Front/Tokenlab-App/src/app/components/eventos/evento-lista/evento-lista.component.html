@@ -30,9 +30,8 @@
         <th>Tema</th>
         <th>Descrição</th>
         <th class="d-none d-md-table-cell">Local</th>
-        <th>Data</th>
-        <th>Inicio</th>
-        <th>Término</th>
+        <th>Data e Hora Início</th>
+        <th>Data e Hora Término</th>
         <th class="d-none d-md-table-cell">Qtd Pessoas</th>
         <th class="d-none d-md-table-cell">Lote</th>
         <th>Opções</th>
@@ -48,14 +47,13 @@
         <td>{{evento.tema}}</td>
         <td>{{evento.descricao}}</td>
         <td class="d-none d-md-table-cell">{{evento.local}}</td>
-        <td>{{evento.dataEvento | DateFormatPipe}}</td>
-        <td>{{evento.horaInicio}}</td>
-        <td>{{evento.horaTermino}}</td>
+        <td>{{evento.horaInicio | DateFormatPipe}}</td>
+        <td>{{evento.horaTermino | DateFormatPipe}}</td>
         <td class="d-none d-md-table-cell">{{evento.qtdPessoas}}</td>
-        <td class="d-none d-md-table-cell">{{"teste" | uppercase}}</td>
-        <!-- <td class="d-none d-md-table-cell">{{evento.lotes[0].nome | uppercase}}</td> -->
+        <td class="d-none d-md-table-cell">{{evento.lotes[0]?.nome | uppercase}}</td>
         <td>
-          <button type="button" class="btn btn-danger btn-lg" tooltip="Excluir" (click)="openModal(template)">
+          <button type="button" class="btn btn-danger btn-lg" tooltip="Excluir"
+            (click)="openModal($event, template, evento.id)">
             <i class="fa fa-trash"></i>
           </button>
         </td>
@@ -63,7 +61,7 @@
     </tbody>
     <tfoot *ngIf="!eventos.length">
       <tr>
-        <td colspan="8" class="text-center">
+        <td colspan="11" class="text-center">
           <h4>Nenhum evento encontrado!</h4>
         </td>
       </tr>
@@ -76,7 +74,7 @@
 
 <ng-template #template>
   <div class="modal-body text-center">
-    <p>Tem certeza que quer deletar este Evento?</p>
+    <p>Tem certeza que quer deletar o Evento de Código {{this.eventoId}}?</p>
     <button type="button" class="btn btn-default" (click)="confirm()">Sim</button>
     <button type="button" class="btn btn-primary" (click)="decline()">Não</button>
   </div>

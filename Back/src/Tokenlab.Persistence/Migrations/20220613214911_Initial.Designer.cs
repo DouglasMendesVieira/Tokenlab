@@ -25,19 +25,16 @@ namespace Tokenlab.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime?>("DataEvento")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("Descricao")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("HoraInicio")
+                    b.Property<DateTime?>("HoraInicio")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("HoraTermino")
+                    b.Property<DateTime?>("HoraTermino")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ImagemURL")

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -13,11 +14,10 @@ namespace Tokenlab.Application.Dtos
 
         [Required(ErrorMessage = "O campo {0} é obrigtório."),
          StringLength(200, MinimumLength = 5, ErrorMessage = "Intervalo permitido de 5 a 200 caracteres.")]
-        public string Descrição { get; set; }
+        public string Descricao { get; set; }
         public string Local { get; set; }
-        public string DataEvento { get; set; }
-        public string HoraInicio { get; set; }
-        public string HoraTermino { get; set; }
+        public DateTime? HoraInicio { get; set; }
+        public DateTime? HoraTermino { get; set; }
 
         [Display(Name = "Qtd Pessoas")]
         [Range(1, 120000, ErrorMessage = "{0} não pode ser menor que 1 e maior que 120.000")]
@@ -35,7 +35,6 @@ namespace Tokenlab.Application.Dtos
         [Display(Name = "e-mail")]
         [EmailAddress(ErrorMessage = "É necessário ser um {0} válido")]
         public string Email { get; set; }
-
         public IEnumerable<LoteDto> Lotes { get; set; }
         public IEnumerable<RedeSocialDto> RedesSociais { get; set; }
         public IEnumerable<PalestranteDto> Palestrantes { get; set; }

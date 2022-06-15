@@ -7,9 +7,8 @@ export interface Evento {
   tema: string;
   descricao: string;
   local: string;
-  dataEvento?: Date;
-  horaInicio: string;
-  horaTermino: string;
+  horaInicio?: Date;
+  horaTermino?: Date;
   qtdPessoas: number;
   imagemURL: string;
   telefone: string;

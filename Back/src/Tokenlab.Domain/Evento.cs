@@ -9,9 +9,8 @@ namespace Tokenlab.Domain
         public string Tema { get; set; }
         public string Descricao { get; set; }
         public string Local { get; set; }
-        public DateTime? DataEvento { get; set; }
-        public string HoraInicio { get; set; }
-        public string HoraTermino { get; set; }
+        public DateTime? HoraInicio { get; set; }
+        public DateTime? HoraTermino { get; set; }
         public int QtdPessoas { get; set; }
         public string ImagemURL { get; set; }
         public string Telefone { get; set; }
