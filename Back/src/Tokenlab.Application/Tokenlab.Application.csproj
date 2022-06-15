@@ -5,8 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../Tokenlab.Domain/Tokenlab.Domain.csproj"/>
-    <ProjectReference Include="../Tokenlab.Persistence/Tokenlab.Persistence.csproj"/>
+    <ProjectReference Include="..\Tokenlab.Domain\Tokenlab.Domain.csproj" />
+    <ProjectReference Include="..\Tokenlab.Persistence\Tokenlab.Persistence.csproj" />
   </ItemGroup>
 
-</Project> 
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+  </ItemGroup>
+
+</Project>

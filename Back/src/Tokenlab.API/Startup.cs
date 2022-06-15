@@ -10,6 +10,8 @@ using Tokenlab.Application.Contratos;
 using Tokenlab.Persistence;
 using Tokenlab.Persistence.Contexto;
 using Tokenlab.Persistence.Contratos;
+using AutoMapper;
+using System;
 
 namespace Tokenlab.API
 {
@@ -28,7 +30,12 @@ namespace Tokenlab.API
             services.AddDbContext<TokenlabContext>(
                 context => context.UseSqlite(Configuration.GetConnectionString("Default"))
             );
-            services.AddControllers().AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+            services.AddControllers()
+                    .AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling =
+                        Newtonsoft.Json.ReferenceLoopHandling.Ignore
+                    );
+
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddScoped<IEventoService, EventoService>();
             services.AddScoped<IGeralPersist, GeralPersist>();
